@@ -18,9 +18,9 @@ const socials = [
     },
     {
         label: 'Email',
-        href: 'mailto:ayoub.lamini@example.com',
+        href: 'mailto:ayoublamini.dev@gmail.com',
         icon: Mail,
-        handle: 'ayoub.lamini@example.com',
+        handle: 'ayoublamini.dev@gmail.com',
     },
 ]
 

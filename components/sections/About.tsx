@@ -125,7 +125,7 @@ export default function About() {
 
                         <div ref={textRef} className="mt-8 space-y-5">
                             <p className="text-muted leading-relaxed text-lg">
-                                I'm <span className="text-ghost-white font-medium">Ayoub Lamini</span>, a software developer who operates at both ends of the stack — from writing memory-safe C code to shipping polished Next.js applications.
+                                I&apos;m <span className="text-ghost-white font-medium">Ayoub Lamini</span>, a software developer who operates at both ends of the stack — from writing memory-safe C code to shipping polished Next.js applications.
                             </p>
                             <p className="text-muted leading-relaxed">
                                 My journey through <span className="text-cyber-blue">1337 (42 Network)</span> forged a problem-solving mindset that goes beyond syntax — understanding how computers actually work, from process management to network protocols.
