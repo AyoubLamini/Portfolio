@@ -45,7 +45,7 @@ export default function ModelSection() {
     return (
         <section
             ref={sectionRef}
-            className="relative py-20 px-6 overflow-hidden min-h-[80vh] flex items-center"
+            className="relative py-20 px-6 overflow-hidden lg:min-h-[80vh] flex items-center"
         >
             <div className="absolute inset-0 bg-gradient-to-b from-void via-void-2 to-void pointer-events-none" />
             <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px] bg-cyber-blue/5 pointer-events-none" />
@@ -78,7 +78,8 @@ export default function ModelSection() {
                         </div>
                     </div>
 
-                    <div className="relative h-[500px] lg:h-[600px]">
+                    {/* Hidden on mobile/tablet — 3D model doesn't support touch interaction */}
+                    <div className="relative h-[500px] lg:h-[600px] hidden lg:block">
                         <div
                             className="absolute inset-0 rounded-full border border-cyber-blue/10 m-8 pointer-events-none"
                             style={{

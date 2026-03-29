@@ -142,7 +142,7 @@ export default function About() {
                                 </div>
                                 <div className="p-4 rounded-xl border border-neon-cyan/20 bg-neon-cyan/5">
                                     <p className="font-mono text-neon-cyan text-xs tracking-widest mb-2">WEB</p>
-                                    <p className="text-ghost-white font-medium text-sm"> React · Next.js · TypeScript · NestJS</p>
+                                    <p className="text-ghost-white font-medium text-sm"> React · Next.js · TypeScript · NodeJs</p>
                                 </div>
                             </div>
 
