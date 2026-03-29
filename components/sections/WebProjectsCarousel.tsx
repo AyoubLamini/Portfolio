@@ -27,7 +27,7 @@ const webProjects = [
         tags: ['Laravel', 'React.js', 'Axios', 'MySQL', 'Passport', 'CRUD'],
         accentColor: '#ff6b35',
         link: 'https://github.com/AyoubLamini/QuickAnnonce',
-        imageBg: '/QuickAnnonceV3.png',
+        imageBg: '/pciture123.png',
         shape: '⬡',
         ongoing: false,
     },
