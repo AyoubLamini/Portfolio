@@ -14,7 +14,7 @@ const webProjects = [
         description: 'Frontend for 1337 students to manage and track vacations. Implements real-time updates, light & dark mode, and React hooks.',
         tags: ['React.js', 'HTML', 'CSS', 'Hooks', 'Web App'],
         accentColor: '#00d4ff',
-        link: 'https://github.com/mza7a/1337-vacations',
+        link: 'https://github.com/AyoubLamini/1337-Vacations',
         imageBg: '/1337-vacations.png',
         shape: '◈',
         ongoing: false,
