@@ -14,197 +14,41 @@ html {
 }
 
 body {
-  background-color: #050508;
-  color: #e8e8f0;
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background-color: #09090b;
+  color: #f4f4f5;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
-  cursor: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050508;
+  background: #09090b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0099bb;
-  border-radius: 2px;
+  background: #27272a;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00d4ff;
+  background: #3f3f46;
 }
 
 ::selection {
-  background: rgba(0, 212, 255, 0.25);
-  color: #fff;
+  background: rgba(79, 70, 229, 0.2);
+  color: #ffffff;
 }
 
-.cyber-grid-bg {
-  background-image:
-    linear-gradient(rgba(0, 212, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
+.text-balance {
+  text-wrap: balance;
 }
 
-.glow-text {
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.25);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #00d4ff 0%, #00ffee 50%, #0099bb 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glitch-text {
-  position: relative;
-}
-
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.glitch-text::before {
-  color: #00ffee;
-  animation: glitch-1 3s infinite linear;
-  opacity: 0.7;
-}
-
-.glitch-text::after {
-  color: #ff006e;
-  animation: glitch-2 3s infinite linear;
-  opacity: 0.7;
-}
-
-@keyframes glitch-1 {
-
-  0%,
-  100% {
-    clip-path: inset(0 0 95% 0);
-    transform: translate(-2px, 0);
-  }
-
-  20% {
-    clip-path: inset(30% 0 50% 0);
-    transform: translate(2px, 0);
-  }
-
-  40% {
-    clip-path: inset(70% 0 10% 0);
-    transform: translate(-1px, 0);
-  }
-
-  60% {
-    clip-path: inset(10% 0 80% 0);
-    transform: translate(1px, 0);
-  }
-
-  80% {
-    clip-path: inset(50% 0 30% 0);
-    transform: translate(-2px, 0);
-  }
-}
-
-@keyframes glitch-2 {
-
-  0%,
-  100% {
-    clip-path: inset(80% 0 5% 0);
-    transform: translate(2px, 0);
-  }
-
-  20% {
-    clip-path: inset(10% 0 70% 0);
-    transform: translate(-2px, 0);
-  }
-
-  40% {
-    clip-path: inset(50% 0 20% 0);
-    transform: translate(1px, 0);
-  }
-
-  60% {
-    clip-path: inset(20% 0 60% 0);
-    transform: translate(-1px, 0);
-  }
-
-  80% {
-    clip-path: inset(60% 0 15% 0);
-    transform: translate(2px, 0);
-  }
-}
-
-@keyframes scan {
-  0% {
-    top: -100%;
-  }
-
-  100% {
-    top: 200%;
-  }
-}
-
-.scan-line {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
-  animation: scan 3s linear infinite;
-  opacity: 0.3;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-
-@keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
-
-.blink {
-  animation: blink 1s step-end infinite;
-}
-
-#intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: #050508;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.text-pretty {
+  text-wrap: pretty;
 }

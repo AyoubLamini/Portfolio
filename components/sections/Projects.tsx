@@ -1,262 +1,221 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import WebProjectsCarousel from '@/components/sections/WebProjectsCarousel'
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger)
-}
+import { useState } from 'react'
+import { Github, ExternalLink } from 'lucide-react'
 
 const projects = [
+     {
+        id: 'ft-transcendence',
+        title: 'ft_transcendence',
+        category: 'web',
+        categoryLabel: 'Full-Stack / Web',
+        description: 'A full-stack multiplayer Pong platform featuring real-time gameplay with WebSockets, OAuth authentication, live chat, friend management, match history, blockchain-backed scores, and customizable user profiles.',
+        tags: ['TypeScript', 'NextJs', 'Fastify', 'WebSockets', 'Docker', 'Solidity', 'BLOCKCHAIN'],
+        github: 'https://github.com/YounesMoukhlij/ft_transcendence_42',
+        demo: null,
+        ongoing: false,
+    },
+    {
+        id: 'api-monitor',
+        title: 'API Monitor SaaS',
+        category: 'web',
+        categoryLabel: 'Full-Stack / Web',
+        description: 'A monitoring platform for APIs and servers featuring uptime checks, response time tracking, authentication and refresh token, and incident notification systemm through email and Discord.',
+        tags: ['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Prisma', 'Tailwind'],
+        github: 'https://github.com/AyoubLamini/ApiMonitor',
+        demo: null,
+        ongoing: false,
+    },
     {
         id: 'minishell',
         title: 'Minishell',
-        category: 'Systems / C',
-        description:
-            'A fully functional POSIX-compliant shell built from scratch. Implements lexing, parsing, heredocs, pipes, redirections, signals, and built-in commands.',
+        category: 'systems',
+        categoryLabel: 'Systems / C',
+        description: 'A fully functional POSIX-compliant shell built from scratch. Implements lexing, parsing, heredocs, pipes, redirections, signals, and built-in commands.',
         tags: ['C', 'POSIX', 'Processes', 'Signals', 'Parsing'],
-        color: '#00d4ff',
-        icon: '/bashIcon.png',
         github: 'https://github.com/AyoubLamini/42-Minishell',
-        highlight: 'Handles 100% of bash edge cases tested',
+        demo: null,
+        ongoing: false,
     },
     {
         id: 'irc-server',
         title: 'IRC Server',
-        category: 'Networking / C++',
-        description:
-            'RFC 2812-compliant IRC server supporting multiple clients, channels, operators, and real-time messaging via non-blocking I/O and poll().',
-        tags: ['C++', 'Sockets', 'RFC 2812', 'poll()', 'Networking'],
-        color: '#00ffee',
-        icon: '/IrcIcon.png',
+        category: 'systems',
+        categoryLabel: 'Networking / C++',
+        description: 'RFC 2812-compliant IRC server supporting multiple clients, channels, operators, and real-time messaging via non-blocking I/O and poll().',
+        tags: ['C++', 'Sockets', 'poll()', 'Networking', 'RFC 2812'],
         github: 'https://github.com/ayoublamini/irc-server',
-        highlight: 'Supports 100+ concurrent clients',
+        demo: null,
+        ongoing: false,
     },
     {
         id: 'cub3d',
         title: 'cub3D',
-        category: 'Graphics / C',
-        description:
-            'A Wolfenstein-style 3D raycasting engine built from scratch using only a minimal graphics library. Features textured walls, sprites, and smooth movement.',
-        tags: ['C', 'Raycasting', 'Math', 'Graphics', 'Game Engine'],
-        color: '#ff6b35',
-        icon: '/cubeIcon.png',
+        category: 'systems',
+        categoryLabel: 'Graphics / C',
+        description: 'A Wolfenstein-style 3D raycasting engine built from scratch. Features textured walls, sprites, rendering calculations, and collision systems.',
+        tags: ['C', 'Raycasting', 'Math', 'Graphics'],
         github: 'https://github.com/Mazouz0/Cub3D_42',
-        highlight: 'Pure raycasting — no OpenGL',
+        demo: null,
+        ongoing: false,
     },
     {
         id: 'inception',
         title: 'Inception',
-        category: 'DevOps / Docker',
-        description:
-            'Multi-container Docker infrastructure using docker-compose. Sets up NGINX with TLS, WordPress with php-fpm, and MariaDB — each in its own container with custom Dockerfiles and persistent volumes.',
+        category: 'web',
+        categoryLabel: 'DevOps / Docker',
+        description: 'Multi-container Docker infrastructure using docker-compose. Configures NGINX with TLS, WordPress with php-fpm, MariaDB, and custom Dockerfiles.',
         tags: ['Docker', 'docker-compose', 'NGINX', 'WordPress', 'MariaDB'],
-        color: '#a855f7',
-        icon: '/dockerIcon.png',
         github: 'https://github.com/AyoubLamini/Inception',
-        highlight: 'Full infra from scratch — no pre-built images',
+        demo: null,
+        ongoing: false,
     },
     {
-        id: 'ft-transcendence',
-        title: 'ft_transcendence',
-        category: 'Full-Stack / Web',
-        description:
-            'The 42 common core capstone — a real-time multiplayer Pong game with OAuth authentication, live chat, friend system, match history, and user profiles. Built as a single-page application.',
-        tags: ['TypeScript', 'Fastify', 'LiteSql', 'WebSockets', 'Docker'],
-        color: '#22c55e',
-        icon: '/pongIcon.png',
-        github: 'https://github.com/YounesMoukhlij/ft_transcendence_42',
-        highlight: '42 common core final project',
+        id: 'vacations-1337',
+        title: '1337 Vacations',
+        category: 'web',
+        categoryLabel: 'Web / React',
+        description: 'Vacation management frontend for 1337 school students. features both student vacation date picker and admin dashboard for requests management.',
+        tags: ['React.js', 'HTML', 'CSS', 'JavaScript'],
+        github: 'https://github.com/AyoubLamini/1337-Vacations',
+        demo: null,
+        ongoing: false,
     },
+    {
+        id: 'quick-annonce',
+        title: 'QuickAnnonce',
+        category: 'web',
+        categoryLabel: 'Web / React & Laravel',
+        description: 'My first full stack Web App, features CRUD operations through API, Laravel passport token management, and React friendly UI',
+        tags: ['Laravel', 'React.js', 'Axios', 'MySQL', 'Passport'],
+        github: 'https://github.com/AyoubLamini/QuickAnnonce',
+        demo: null,
+        ongoing: false,
+    }
 ]
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-    const cardRef = useRef<HTMLDivElement>(null)
-    const [hovered, setHovered] = useState(false)
-    const [tilt, setTilt] = useState({ x: 0, y: 0 })
-
-    useEffect(() => {
-        if (!cardRef.current) return
-
-        gsap.fromTo(
-            cardRef.current,
-            { opacity: 0, y: 60 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                delay: index * 0.1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: cardRef.current,
-                    start: 'top 85%',
-                },
-            }
-        )
-    }, [index])
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = cardRef.current?.getBoundingClientRect()
-        if (!rect) return
-        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 12
-        const y = ((e.clientY - rect.top) / rect.height - 0.5) * -12
-        setTilt({ x, y })
-    }
-
-    const handleMouseLeave = () => {
-        setHovered(false)
-        setTilt({ x: 0, y: 0 })
-    }
-
-    return (
-        <div
-            ref={cardRef}
-            className="relative group cursor-pointer"
-            onMouseEnter={() => setHovered(true)}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            data-cursor-hover
-            style={{
-                transform: `perspective(1000px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg)`,
-                transition: hovered ? 'transform 0.1s ease' : 'transform 0.5s cubic-bezier(0.23,1,0.32,1)',
-            }}
-        >
-            <div
-                className="relative h-full p-6 rounded-2xl border overflow-hidden"
-                style={{
-                    background: 'rgba(10, 10, 15, 0.8)',
-                    borderColor: hovered ? `${project.color}40` : 'rgba(255,255,255,0.06)',
-                    boxShadow: hovered ? `0 0 40px ${project.color}15, 0 20px 60px rgba(0,0,0,0.5)` : '0 4px 20px rgba(0,0,0,0.3)',
-                    transition: 'border-color 0.3s, box-shadow 0.3s',
-                }}
-            >
-                <div
-                    className="absolute top-0 left-0 right-0 h-px transition-opacity duration-300 pointer-events-none"
-                    style={{
-                        background: `linear-gradient(90deg, transparent, ${project.color}, transparent)`,
-                        opacity: hovered ? 1 : 0,
-                    }}
-                />
-
-                <div
-                    className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl transition-opacity duration-500 pointer-events-none"
-                    style={{
-                        background: project.color,
-                        opacity: hovered ? 0.04 : 0,
-                    }}
-                />
-
-                <div className="relative z-10 flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            src={project.icon}
-                            alt={project.title}
-                            width={50}
-                            height={40}
-                        />
-                    </div>
-                    <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative z-20 text-sm font-mono transition-all duration-300 px-2 py-1 rounded-md border border-transparent"
-                        style={{ color: 'rgba(136,136,136,0.8)' }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.color = project.color
-                            e.currentTarget.style.borderColor = `${project.color}30`
-                            e.currentTarget.style.backgroundColor = `${project.color}10`
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.color = 'rgba(136,136,136,0.8)'
-                            e.currentTarget.style.borderColor = 'transparent'
-                            e.currentTarget.style.backgroundColor = 'transparent'
-                        }}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        GitHub ↗
-                    </a>
-                </div>
-
-                <div className="mb-1">
-                    <p className="font-mono text-xs mb-2" style={{ color: project.color }}>
-                        {project.category}
-                    </p>
-                    <h3 className="text-xl font-bold text-ghost-white mb-3 group-hover:text-white transition-colors">
-                        {project.title}
-                    </h3>
-                    <p className="text-muted text-sm leading-relaxed">{project.description}</p>
-                </div>
-
-                <div
-                    className="mt-4 px-3 py-1.5 rounded-lg inline-block"
-                    style={{ background: `${project.color}10`, border: `1px solid ${project.color}20` }}
-                >
-                    <p className="font-mono text-xs" style={{ color: project.color }}>
-                        ✓ {project.highlight}
-                    </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mt-4">
-                    {project.tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="px-2 py-1 rounded font-mono text-xs text-muted border border-white/5"
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-            </div>
-        </div>
-    )
-}
-
 export default function Projects() {
-    const titleRef = useRef<HTMLDivElement>(null)
+    const [filter, setFilter] = useState<'all' | 'systems' | 'web'>('all')
 
-    useEffect(() => {
-        if (!titleRef.current) return
-        gsap.fromTo(
-            titleRef.current,
-            { opacity: 0, y: 40 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: titleRef.current,
-                    start: 'top 80%',
-                },
-            }
-        )
-    }, [])
+    const filteredProjects = projects.filter(
+        (project) => filter === 'all' || project.category === filter
+    )
 
     return (
-        <section id="projects" className="relative py-32 px-6 overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[120px] bg-cyber-blue/3 pointer-events-none" />
+        <section id="projects" className="py-24 border-t border-neutral-border bg-neutral-bg px-6">
+            <div className="max-w-6xl mx-auto">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                    <div>
+                        <h2 className="font-sans font-bold text-4xl sm:text-5xl text-neutral-ink tracking-tight">
+                            Projects
+                        </h2>
+                        {/* <p className="mt-3 text-neutral-ink-muted max-w-lg leading-relaxed text-sm">
+                            A curated selection of my work spanning low-level C programming, networking, graphics engines, container DevOps, and modern full-stack web applications.
+                        </p> */}
+                    </div>
 
-            <div className="max-w-7xl mx-auto relative z-10">
-                <div ref={titleRef} className="mb-16">
-                    <h2 className="text-5xl md:text-6xl font-bold text-ghost-white">
-                        Selected{' '}
-                        <span className="gradient-text">Projects</span>
-                    </h2>
-                    <p className="mt-4 text-muted max-w-xl">
-                        From kernel-level C to production web apps — each project a different layer of the stack.
-                    </p>
+                    {/* Filter Bar */}
+                    <div className="flex items-center gap-1 border border-neutral-border p-1 bg-neutral-surface rounded-md self-start md:self-auto">
+                        <button
+                            onClick={() => setFilter('all')}
+                            className={`px-3 py-1 text-xs font-sans font-medium rounded-md transition-all ${
+                                filter === 'all'
+                                    ? 'bg-neutral-bg text-neutral-ink shadow-sm'
+                                    : 'text-neutral-ink-muted hover:text-neutral-ink'
+                            }`}
+                        >
+                            All
+                        </button>
+                        <button
+                            onClick={() => setFilter('systems')}
+                            className={`px-3 py-1 text-xs font-sans font-medium rounded-md transition-all ${
+                                filter === 'systems'
+                                    ? 'bg-neutral-bg text-neutral-ink shadow-sm'
+                                    : 'text-neutral-ink-muted hover:text-neutral-ink'
+                            }`}
+                        >
+                            Systems (C/C++)
+                        </button>
+                        <button
+                            onClick={() => setFilter('web')}
+                            className={`px-3 py-1 text-xs font-sans font-medium rounded-md transition-all ${
+                                filter === 'web'
+                                    ? 'bg-neutral-bg text-neutral-ink shadow-sm'
+                                    : 'text-neutral-ink-muted hover:text-neutral-ink'
+                            }`}
+                        >
+                            Web & DevOps
+                        </button>
+                    </div>
                 </div>
 
+                {/* Projects Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project, i) => (
-                        <ProjectCard key={project.id} project={project} index={i} />
+                    {filteredProjects.map((project) => (
+                        <div
+                            key={project.id}
+                            className="group flex flex-col justify-between p-6 rounded-md border border-neutral-border bg-neutral-surface hover:border-neutral-ink-muted/30 transition-colors duration-150"
+                        >
+                            <div>
+                                <div className="flex items-center justify-between gap-4 mb-4">
+                                    <span className="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase">
+                                        {project.categoryLabel}
+                                    </span>
+                                    {project.ongoing && (
+                                        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-neutral-bg border border-neutral-border text-neutral-ink-muted font-mono text-[9px] uppercase tracking-wider">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                                            Active
+                                        </span>
+                                    )}
+                                </div>
+
+                                <h3 className="font-sans font-semibold text-lg text-neutral-ink mb-2">
+                                    {project.title}
+                                </h3>
+                                <p className="text-neutral-ink-muted text-sm leading-relaxed mb-6 text-pretty">
+                                    {project.description}
+                                </p>
+                            </div>
+
+                            <div>
+                                {/* Tech Tags */}
+                                <div className="flex flex-wrap gap-1.5 mb-6">
+                                    {project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-2 py-0.5 rounded font-mono text-[10px] text-neutral-ink-muted bg-neutral-bg border border-neutral-border"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                {/* Actions */}
+                                <div className="flex items-center gap-4 pt-4 border-t border-neutral-border/50">
+                                    <a
+                                        href={project.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                    >
+                                        <Github size={14} /> github ↗
+                                    </a>
+                                    {project.demo && (
+                                        <a
+                                            href={project.demo}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-1 text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                        >
+                                            <ExternalLink size={14} /> demo ↗
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
-
-                <WebProjectsCarousel />
             </div>
         </section>
     )

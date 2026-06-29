@@ -7,17 +7,16 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'void': '#050508',
-                'void-2': '#0a0a0f',
-                'cyber-blue': '#00d4ff',
-                'cyber-blue-dim': '#0099bb',
-                'neon-cyan': '#00ffee',
-                'ghost-white': '#e8e8f0',
-                'muted': '#6b7280',
-                'border-dim': '#1a1a2e',
+                'neutral-bg': '#09090b',
+                'neutral-surface': '#18181b',
+                'neutral-border': '#27272a',
+                'neutral-ink': '#f4f4f5',
+                'neutral-ink-muted': '#a1a1aa',
+                'primary': '#4f46e5',
+                'primary-hover': '#4338ca',
             },
             fontFamily: {
-                sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+                sans: ['Manrope', 'system-ui', 'sans-serif'],
                 mono: ['JetBrains Mono', 'monospace'],
             },
             animation: {

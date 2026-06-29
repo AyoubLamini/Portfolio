@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-29T18:57:00Z",
+  "title": "Design System: Ayoub Lamini Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Calm Indigo",
+        "canonical": "oklch(53% 0.24 269)",
+        "tonalRamp": ["#070717", "#0e0e37", "#1f1d6b", "#3633ab", "#4f46e5", "#786df7", "#a69efb", "#dad6fd"]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Deep Indigo",
+        "canonical": "oklch(48% 0.24 269)",
+        "tonalRamp": ["#060613", "#0c0a2e", "#1b195b", "#2f2b93", "#4338ca", "#6b5cf5", "#9e94fb", "#d5d0fd"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Studio Ink",
+        "canonical": "oklch(12% 0.005 240)",
+        "tonalRamp": ["#010102", "#050506", "#09090b", "#141417", "#1f1f23", "#3d3d44", "#8e8e93", "#f4f4f5"]
+      },
+      "neutral-surface": {
+        "role": "neutral",
+        "displayName": "Panel Slate",
+        "canonical": "oklch(18% 0.005 240)",
+        "tonalRamp": ["#040405", "#0a0a0c", "#18181b", "#27272a", "#3f3f46", "#71717a", "#c4c4c7", "#fafafa"]
+      },
+      "neutral-border": {
+        "role": "neutral",
+        "displayName": "Rule Border",
+        "canonical": "oklch(22% 0.005 240)",
+        "tonalRamp": ["#0a0a0c", "#131316", "#27272a", "#3e3e42", "#5c5c60", "#8e8e93", "#d1d1d6", "#f2f2f7"]
+      },
+      "neutral-ink": {
+        "role": "neutral",
+        "displayName": "Studio Paper",
+        "canonical": "oklch(97% 0.005 240)",
+        "tonalRamp": ["#09090b", "#18181b", "#27272a", "#52525b", "#a1a1aa", "#d4d4d8", "#f4f4f5", "#ffffff"]
+      },
+      "neutral-ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Slate Muted",
+        "canonical": "oklch(70% 0.005 240)",
+        "tonalRamp": ["#18181b", "#27272a", "#3f3f46", "#52525b", "#71717a", "#a1a1aa", "#d4d4d8", "#f4f4f5"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero main typography title." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Cards and containers headers." },
+      "body": { "displayName": "Body", "purpose": "Long descriptions and text prose." },
+      "label": { "displayName": "Label", "purpose": "Buttons, controls, tags, and small eyebrows." }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "transition-standard",
+        "value": "all 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for microinteractions, hovers, and state transitions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Standard action button used for high-importance interactions.",
+      "html": "<button class=\"ds-btn-primary\">View Projects</button>",
+      "css": ".ds-btn-primary { background: #4f46e5; color: #09090b; padding: 8px 16px; font-family: Geist Sans, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; border: none; border-radius: 4px; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; } .ds-btn-primary:hover { background: #4338ca; } .ds-btn-primary:focus-visible { outline: 2px solid #4f46e5; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Ghost button used for auxiliary actions or lower-importance links.",
+      "html": "<button class=\"ds-btn-secondary\">Contact Me</button>",
+      "css": ".ds-btn-secondary { background: transparent; color: #f4f4f5; padding: 8px 16px; font-family: Geist Sans, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; border: 1px solid #27272a; border-radius: 4px; transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; } .ds-btn-secondary:hover { background: #18181b; } .ds-btn-secondary:focus-visible { outline: 2px solid #4f46e5; outline-offset: 2px; }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Standard card used for list items, project showcases, and details.",
+      "html": "<div class=\"ds-card\"><h3 class=\"ds-card-title\">Next.js SaaS Platform</h3><p class=\"ds-card-desc\">A high-performance full-stack web application built with TypeScript, React, and clean architecture principles.</p></div>",
+      "css": ".ds-card { background: #18181b; border: 1px solid #27272a; border-radius: 8px; padding: 24px; font-family: Geist Sans, system-ui, sans-serif; } .ds-card-title { color: #f4f4f5; font-size: 1.25rem; font-weight: 500; margin-bottom: 8px; letter-spacing: -0.01em; } .ds-card-desc { color: #a1a1aa; font-size: 1rem; line-height: 1.6; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineer's Atelier",
+    "overview": "The visual system is centered on the principles of utility, precision, and restraint. It departs from the loud, glowing, cyberpunk gaming aesthetic to build a canvas that feels like a professional code editor or a high-end software studio. Space is treated as a functional structure rather than blank filling, and visual interest is derived entirely from typographic hierarchy, alignment, and high-quality microinteractions rather than decorative embellishments.",
+    "keyCharacteristics": [
+      "Premium dark minimalism (low-saturation Slate and Zinc tones).",
+      "Typographic focus utilizing a single cohesive sans-serif family (Geist Sans) styled with negative letter-spacing for display.",
+      "Strict, consistent grid alignment based on a 4px/8px system.",
+      "Usability-first microinteractions and motion (150ms transitions)."
+    ],
+    "rules": [
+      { "name": "The Rare Accent Rule", "body": "Calm Indigo must be applied to ≤5% of any screen. Its rarity is what gives it visual utility, immediately directing the visitor's eye to primary actions.", "section": "colors" },
+      { "name": "The Border-as-Structure Rule", "body": "Layout boundaries are defined by thin Rule Borders (#27272a) rather than shadow elevations or background gradients.", "section": "colors" },
+      { "name": "The No-Orphan Rule", "body": "Display, headline, and title elements must utilize text-wrap: balance to prevent single word wraps.", "section": "typography" },
+      { "name": "The Contrast-Not-Variety Rule", "body": "Do not introduce additional font families. Establish hierarchy strictly through weight, size, and letter-spacing variation.", "section": "typography" },
+      { "name": "The Flat-by-Default Rule", "body": "Containers, panels, and buttons are completely flat at rest.", "section": "elevation" },
+      { "name": "The No-Glow Rule", "body": "Shadows and glows (including box-shadow glow effects or neon drops) are prohibited on cards, texts, and buttons, even on hover.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do limit the line length of body paragraphs to 65-75ch to ensure optimal readability.",
+      "Do use Geist Sans for both headlines and body text to maintain a consistent SaaS tool aesthetic.",
+      "Do apply Calm Indigo strictly to primary CTA buttons and active states to guide user focus.",
+      "Do implement high-contrast focus rings and aria-labels on all interactive elements."
+    ],
+    "donts": [
+      "Don't use neon colors, glowing text, scanlines, or glitch effects.",
+      "Don't use text gradients (background-clip: text combined with gradients) anywhere.",
+      "Don't use Space Grotesk or any other fonts from the reflex-reject list.",
+      "Don't use side-stripe borders (e.g. border-left: 4px) as accents on cards.",
+      "Don't use decorative animations or floating blobs in the background.",
+      "Don't use shadows or glassmorphism as a default backdrop decoration."
+    ]
+  }
+}

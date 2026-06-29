@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Github, Linkedin, Mail, Send, ArrowUpRight } from 'lucide-react'
 
 const socials = [
@@ -25,13 +25,11 @@ const socials = [
 ]
 
 export default function Contact() {
-    const formRef = useRef<HTMLFormElement>(null)
     const [formState, setFormState] = useState({
         name: '',
         email: '',
         message: '',
     })
-    const [focused, setFocused] = useState<string | null>(null)
     const [submitted, setSubmitted] = useState(false)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -66,120 +64,79 @@ export default function Contact() {
     }
 
     return (
-        <section id="contact" className="relative py-32 px-6 overflow-hidden">
-            <div className="absolute inset-0 cyber-grid-bg opacity-20" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-[150px] bg-cyber-blue/5 pointer-events-none" />
-
-            <div className="max-w-6xl mx-auto relative z-10">
-                <div className="text-center mb-20">
-                    <h2 className="text-5xl md:text-7xl font-bold text-ghost-white">
-                        Let&apos;s Build{' '}
-                        <span className="gradient-text">Something</span>
+        <section id="contact" className="py-24 border-t border-neutral-border bg-neutral-bg px-6">
+            <div className="max-w-6xl mx-auto">
+                <div className="mb-16">
+                    <h2 className="font-sans font-bold text-4xl sm:text-5xl text-neutral-ink tracking-tight">
+                        Get In Touch
                     </h2>
-                    <p className="mt-6 text-muted text-lg max-w-xl mx-auto">
-                        Have a project in mind? Want to collaborate? Or just want to talk tech?
-                        I&apos;m always open to interesting conversations.
+                    <p className="mt-3 text-neutral-ink-muted max-w-lg leading-relaxed text-sm">
+                        want to collaborate, build something together ? or just want to connect, reach out and say Hi!
                     </p>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
+                    {/* Form */}
                     <div>
                         {submitted ? (
-                            <div className="flex flex-col items-center justify-center h-64 text-center">
-                                <div className="w-16 h-16 rounded-full border-2 border-cyber-blue flex items-center justify-center mb-6"
-                                    style={{ boxShadow: '0 0 30px rgba(0,212,255,0.3)' }}>
-                                    <span className="text-cyber-blue text-2xl">✓</span>
+                            <div className="flex flex-col items-center justify-center p-12 border border-neutral-border bg-neutral-surface rounded-md text-center">
+                                <div className="w-12 h-12 rounded-full border border-primary flex items-center justify-center mb-4">
+                                    <span className="text-primary text-lg">✓</span>
                                 </div>
-                                <h3 className="text-xl font-bold text-ghost-white mb-2">Message Sent!</h3>
-                                <p className="text-muted">I&apos;ll get back to you as soon as possible.</p>
+                                <h3 className="font-sans font-semibold text-lg text-neutral-ink mb-1">Message Sent</h3>
+                                <p className="text-neutral-ink-muted text-sm">I&apos;ll get back to you shortly.</p>
                             </div>
                         ) : (
-                            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-                                <div className="relative">
-                                    <label className="font-mono text-xs text-muted tracking-widest mb-2 block">
-                                        NAME
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div>
+                                    <label className="font-mono text-[10px] text-neutral-ink-muted tracking-wider uppercase mb-2 block">
+                                        Name
                                     </label>
                                     <input
                                         type="text"
                                         required
                                         value={formState.name}
                                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                                        onFocus={() => setFocused('name')}
-                                        onBlur={() => setFocused(null)}
-                                        className="w-full bg-white/3 border rounded-xl px-4 py-3 text-black placeholder-muted outline-none transition-all duration-300 font-mono text-sm"
-                                        style={{
-                                            borderColor: focused === 'name' ? 'rgba(0,212,255,0.5)' : 'rgba(255,255,255,0.08)',
-                                            boxShadow: focused === 'name' ? '0 0 20px rgba(0,212,255,0.1)' : 'none',
-                                        }}
+                                        className="w-full bg-neutral-surface border border-neutral-border text-neutral-ink placeholder-neutral-ink-muted/40 rounded-md px-4 py-2.5 text-sm outline-none focus:border-primary transition-all duration-150"
                                         placeholder="Your name"
                                     />
                                 </div>
 
-                                <div className="relative">
-                                    <label className="font-mono text-xs text-muted tracking-widest mb-2 block">
-                                        EMAIL
+                                <div>
+                                    <label className="font-mono text-[10px] text-neutral-ink-muted tracking-wider uppercase mb-2 block">
+                                        Email Address
                                     </label>
                                     <input
                                         type="email"
                                         required
                                         value={formState.email}
                                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                                        onFocus={() => setFocused('email')}
-                                        onBlur={() => setFocused(null)}
-                                        className="w-full bg-white/3 border rounded-xl px-4 py-3 text-black placeholder-muted outline-none transition-all duration-300 font-mono text-sm"
-                                        style={{
-                                            borderColor: focused === 'email' ? 'rgba(0,212,255,0.5)' : 'rgba(255,255,255,0.08)',
-                                            boxShadow: focused === 'email' ? '0 0 20px rgba(0,212,255,0.1)' : 'none',
-                                        }}
-                                        placeholder="your@email.com"
+                                        className="w-full bg-neutral-surface border border-neutral-border text-neutral-ink placeholder-neutral-ink-muted/40 rounded-md px-4 py-2.5 text-sm outline-none focus:border-primary transition-all duration-150"
+                                        placeholder="you@example.com"
                                     />
                                 </div>
 
-                                <div className="relative">
-                                    <label className="font-mono text-xs text-muted tracking-widest mb-2 block">
-                                        MESSAGE
+                                <div>
+                                    <label className="font-mono text-[10px] text-neutral-ink-muted tracking-wider uppercase mb-2 block">
+                                        Message
                                     </label>
                                     <textarea
                                         required
                                         rows={5}
                                         value={formState.message}
                                         onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                                        onFocus={() => setFocused('message')}
-                                        onBlur={() => setFocused(null)}
-                                        className="w-full bg-white/3 border rounded-xl px-4 py-3 text-black placeholder-muted outline-none transition-all duration-300 font-mono text-sm resize-none"
-                                        style={{
-                                            borderColor: focused === 'message' ? 'rgba(0,212,255,0.5)' : 'rgba(255,255,255,0.08)',
-                                            boxShadow: focused === 'message' ? '0 0 20px rgba(0,212,255,0.1)' : 'none',
-                                        }}
-                                        placeholder="Tell me about your project..."
+                                        className="w-full bg-neutral-surface border border-neutral-border text-neutral-ink placeholder-neutral-ink-muted/40 rounded-md px-4 py-2.5 text-sm outline-none focus:border-primary transition-all duration-150 resize-none"
+                                        placeholder="Briefly describe your project or opportunity..."
                                     />
                                 </div>
 
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    data-cursor-hover
-                                    className="group w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl font-mono text-sm font-medium transition-all duration-300 relative overflow-hidden"
-                                    style={{
-                                        background: loading ? 'rgba(0,212,255,0.1)' : 'rgba(0,212,255,0.15)',
-                                        border: '1px solid rgba(0,212,255,0.4)',
-                                        color: '#00d4ff',
-                                        boxShadow: '0 0 30px rgba(0,212,255,0.1)',
-                                    }}
+                                    className="group w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-sans text-sm font-medium bg-primary text-neutral-bg hover:bg-primary-hover transition-colors duration-150 disabled:opacity-50"
                                 >
-                                    <span className="relative z-10">
-                                        {loading ? 'SENDING...' : 'SEND MESSAGE'}
-                                    </span>
-                                    {!loading && (
-                                        <Send
-                                            size={16}
-                                            className="relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
-                                        />
-                                    )}
-                                    {loading && (
-                                        <div className="w-4 h-4 border border-cyber-blue border-t-transparent rounded-full animate-spin" />
-                                    )}
-                                    <div className="absolute inset-0 bg-cyber-blue/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                                    {loading ? 'Sending...' : 'Send Message'}
+                                    {!loading && <Send size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />}
                                 </button>
 
                                 {error && (
@@ -191,8 +148,9 @@ export default function Contact() {
                         )}
                     </div>
 
-                    <div className="space-y-6">
-                        <p className="font-mono text-xs text-muted tracking-widest mb-8">FIND ME ON</p>
+                    {/* Socials */}
+                    <div className="space-y-4">
+                        <p className="font-mono text-[10px] text-neutral-ink-muted tracking-wider uppercase mb-4">Connect</p>
                         {socials.map((social) => {
                             const Icon = social.icon
                             return (
@@ -201,36 +159,36 @@ export default function Contact() {
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    data-cursor-hover
-                                    className="group flex items-center gap-4 p-5 rounded-xl border border-white/6 hover:border-cyber-blue/30 bg-white/2 hover:bg-cyber-blue/5 transition-all duration-300"
+                                    className="group flex items-center gap-4 p-4 rounded-md border border-neutral-border bg-neutral-surface hover:border-neutral-ink-muted/30 transition-all duration-150"
                                 >
-                                    <div className="w-10 h-10 rounded-lg border border-white/10 group-hover:border-cyber-blue/40 flex items-center justify-center transition-all duration-300">
-                                        <Icon size={18} className="text-muted group-hover:text-cyber-blue transition-colors duration-300" />
+                                    <div className="w-9 h-9 rounded-md bg-neutral-bg border border-neutral-border flex items-center justify-center transition-all duration-150">
+                                        <Icon size={16} className="text-neutral-ink-muted group-hover:text-primary transition-colors" />
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-ghost-white font-medium text-sm group-hover:text-white transition-colors">
+                                        <p className="text-neutral-ink font-medium text-sm transition-colors">
                                             {social.label}
                                         </p>
-                                        <p className="text-muted text-xs font-mono mt-0.5">{social.handle}</p>
+                                        <p className="text-neutral-ink-muted text-xs font-mono mt-0.5">{social.handle}</p>
                                     </div>
                                     <ArrowUpRight
-                                        size={16}
-                                        className="text-muted group-hover:text-cyber-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                                        size={14}
+                                        className="text-neutral-ink-muted group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-150"
                                     />
                                 </a>
                             )
                         })}
                     </div>
                 </div>
-            </div>
 
-            <div className="max-w-6xl mx-auto mt-32 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p className="font-mono text-xs text-muted">
-                    © 2025 Ayoub Lamini. Built with love & code.
-                </p>
-                <p className="font-mono text-xs text-muted">
-                    <span className="text-cyber-blue">LA</span> — Software Developer
-                </p>
+                {/* Footer credit */}
+                <div className="mt-24 pt-8 border-t border-neutral-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p className="font-mono text-[11px] text-neutral-ink-muted">
+                        © 2026 Ayoub Lamini. Built with code.
+                    </p>
+                    <p className="font-mono text-[11px] text-neutral-ink-muted">
+                        Ayoub Lamini — Software Developer
+                    </p>
+                </div>
             </div>
         </section>
     )
