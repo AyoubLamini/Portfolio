@@ -1,9 +1,23 @@
 'use client'
 
-import { useState } from 'react'
-import { Github, ExternalLink } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Github, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-const projects = [
+type Project = {
+    id: string
+    title: string
+    category: string
+    categoryLabel: string
+    description: string
+    tags: string[]
+    github: string
+    demo: boolean | null
+    ongoing: boolean
+    isModalOpen: boolean
+    images: string[]
+}
+
+const projects: Project[] = [
      {
         id: 'ft-transcendence',
         title: 'ft_transcendence',
@@ -12,8 +26,10 @@ const projects = [
         description: 'A full-stack multiplayer Pong platform featuring real-time gameplay with WebSockets, OAuth authentication, live chat, friend management, match history, blockchain-backed scores, and customizable user profiles.',
         tags: ['TypeScript', 'NextJs', 'Fastify', 'WebSockets', 'Docker', 'Solidity', 'BLOCKCHAIN'],
         github: 'https://github.com/YounesMoukhlij/ft_transcendence_42',
-        demo: null,
+        demo: true,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/pciture123.png'],
     },
     {
         id: 'api-monitor',
@@ -25,6 +41,8 @@ const projects = [
         github: 'https://github.com/AyoubLamini/ApiMonitor',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/Api_watch/1.png', '/Api_watch/2.png', '/Api_watch/3.png', '/Api_watch/4.png', '/Api_watch/5.png', '/Api_watch/6.png', '/Api_watch/7.png', '/Api_watch/8.png'],
     },
     {
         id: 'minishell',
@@ -36,6 +54,8 @@ const projects = [
         github: 'https://github.com/AyoubLamini/42-Minishell',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/bashIcon.png'],
     },
     {
         id: 'irc-server',
@@ -47,6 +67,8 @@ const projects = [
         github: 'https://github.com/ayoublamini/irc-server',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/IrcIcon.png'],
     },
     {
         id: 'cub3d',
@@ -58,6 +80,8 @@ const projects = [
         github: 'https://github.com/Mazouz0/Cub3D_42',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/cubeIcon.png'],
     },
     {
         id: 'inception',
@@ -69,6 +93,8 @@ const projects = [
         github: 'https://github.com/AyoubLamini/Inception',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/dockerIcon.png'],
     },
     {
         id: 'vacations-1337',
@@ -80,6 +106,8 @@ const projects = [
         github: 'https://github.com/AyoubLamini/1337-Vacations',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/1337-vacations.png', '/1337-vacations-V2.png'],
     },
     {
         id: 'quick-annonce',
@@ -91,15 +119,47 @@ const projects = [
         github: 'https://github.com/AyoubLamini/QuickAnnonce',
         demo: null,
         ongoing: false,
+        isModalOpen: false,
+        images: ['/pciture123.png'],
     }
 ]
 
 export default function Projects() {
     const [filter, setFilter] = useState<'all' | 'systems' | 'web'>('all')
+    const [activeProject, setActiveProject] = useState<Project | null>(null)
+    const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
     const filteredProjects = projects.filter(
         (project) => filter === 'all' || project.category === filter
     )
+
+    // Body scroll locking when modal is open
+    useEffect(() => {
+        if (activeProject) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [activeProject])
+
+    // Keyboard ESC listener to close modal
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setActiveProject(null)
+            }
+        }
+        window.addEventListener('keydown', handleKeyDown)
+        return () => window.removeEventListener('keydown', handleKeyDown)
+    }, [])
+
+    const openPreview = (project: Project) => {
+        setActiveProject(project)
+        setCurrentSlideIndex(0)
+    }
 
     return (
         <section id="projects" className="py-24 border-t border-neutral-border bg-neutral-bg px-6">
@@ -110,9 +170,6 @@ export default function Projects() {
                         <h2 className="font-sans font-bold text-4xl sm:text-5xl text-neutral-ink tracking-tight">
                             Projects
                         </h2>
-                        {/* <p className="mt-3 text-neutral-ink-muted max-w-lg leading-relaxed text-sm">
-                            A curated selection of my work spanning low-level C programming, networking, graphics engines, container DevOps, and modern full-stack web applications.
-                        </p> */}
                     </div>
 
                     {/* Filter Bar */}
@@ -192,31 +249,180 @@ export default function Projects() {
                                 </div>
 
                                 {/* Actions */}
-                                <div className="flex items-center gap-4 pt-4 border-t border-neutral-border/50">
+                               <div className="flex items-center gap-4 pt-4 border-t border-neutral-border/50">
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation()
+                                            openPreview(project)
+                                        }}
+                                        className="text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                    >
+                                        details ↗
+                                    </button>
                                     <a
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-1 text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="inline-flex items-center gap-1 text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors ml-auto"
                                     >
-                                        <Github size={14} /> github ↗
+                                        <Github size={12} /> github
                                     </a>
-                                    {project.demo && (
-                                        <a
-                                            href={project.demo}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-1 text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
-                                        >
-                                            <ExternalLink size={14} /> demo ↗
-                                        </a>
-                                    )}
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {/* Modal Detail Overlay */}
+            {activeProject && (
+                <div className="fixed inset-0 bg-neutral-bg/90 backdrop-blur-sm z-[150] flex items-center justify-center p-4 md:p-8">
+                    {/* Modal Container */}
+                    <div className="relative bg-neutral-surface border border-neutral-border rounded-md  w-[80%] h-[90vh] md:h-[80vh] flex flex-col md:flex-row overflow-hidden shadow-2xl">
+                        
+                        {/* Close button */}
+                        <button
+                            onClick={() => setActiveProject(null)}
+                            className="absolute top-4 right-4 z-50 p-1.5 bg-neutral-bg/85 border border-neutral-border hover:border-neutral-ink-muted rounded-full text-neutral-ink-muted hover:text-neutral-ink transition-all"
+                            aria-label="Close modal"
+                        >
+                            <X size={16} />
+                        </button>
+
+                        {/* Left Side: Media Swiper */}
+                        <div className="w-full md:w-1/2 h-[45%] md:h-full bg-neutral-bg border-b md:border-b-0 md:border-r border-neutral-border relative flex items-center justify-center p-6 select-none">
+                            {activeProject.images && activeProject.images.length > 0 ? (
+                                <div className="relative w-full h-full flex items-center justify-center">
+                                    {/* Current Slide */}
+                                    <img
+                                        src={activeProject.images[currentSlideIndex]}
+                                        alt={`${activeProject.title} view ${currentSlideIndex + 1}`}
+                                        className="max-w-full max-h-full object-contain rounded-md"
+                                    />
+
+                                    {/* Swiper Controls */}
+                                    {activeProject.images.length > 1 && (
+                                        <>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    setCurrentSlideIndex((prev) =>
+                                                        prev === 0 ? activeProject.images.length - 1 : prev - 1
+                                                    )
+                                                }}
+                                                className="absolute left-2 p-1.5 bg-neutral-surface/90 border border-neutral-border hover:border-neutral-ink-muted rounded-full text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                                aria-label="Previous slide"
+                                            >
+                                                <ChevronLeft size={18} />
+                                            </button>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    setCurrentSlideIndex((prev) =>
+                                                        prev === activeProject.images.length - 1 ? 0 : prev + 1
+                                                    )
+                                                }}
+                                                className="absolute right-2 p-1.5 bg-neutral-surface/90 border border-neutral-border hover:border-neutral-ink-muted rounded-full text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                                aria-label="Next slide"
+                                            >
+                                                <ChevronRight size={18} />
+                                            </button>
+
+                                            {/* Dot Indicators */}
+                                            <div className="absolute bottom-2 flex gap-1.5">
+                                                {activeProject.images.map((_, idx) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => setCurrentSlideIndex(idx)}
+                                                        className={`w-1.5 h-1.5 rounded-full transition-all ${
+                                                            idx === currentSlideIndex
+                                                                ? 'bg-primary w-3'
+                                                                : 'bg-neutral-border hover:bg-neutral-ink-muted/50'
+                                                        }`}
+                                                        aria-label={`Go to slide ${idx + 1}`}
+                                                    />
+                                                ))}
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            ) : (
+                                <span className="font-mono text-xs text-neutral-ink-muted">No preview image</span>
+                            )}
+                        </div>
+
+                        {/* Right Side: Details & Stats */}
+                        <div className="w-full md:w-1/2 h-[55%] md:h-full p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
+                            <div>
+                                <span className="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase">
+                                    {activeProject.categoryLabel}
+                                </span>
+                                <h3 className="font-sans font-bold text-2xl text-neutral-ink mt-1">
+                                    {activeProject.title}
+                                </h3>
+                                <p className="text-neutral-ink-muted text-sm leading-relaxed mt-4">
+                                    {activeProject.description}
+                                </p>
+
+                                {/* Technologies */}
+                                <div className="mt-6">
+                                    <h4 className="font-mono text-[10px] text-neutral-ink-muted uppercase tracking-wider mb-2">Technologies</h4>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {activeProject.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="px-2 py-0.5 rounded font-mono text-[10px] text-neutral-ink-muted bg-neutral-bg border border-neutral-border"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Project Stats / Details */}
+                                <div className="mt-6 border-t border-neutral-border/50 pt-4 space-y-2">
+                                    <div className="flex justify-between text-xs font-sans">
+                                        <span className="text-neutral-ink-muted">Status</span>
+                                        <span className="text-neutral-ink font-medium">
+                                            {activeProject.ongoing ? 'Active' : 'Completed'}
+                                        </span>
+                                    </div>
+                                    <div className="flex justify-between text-xs font-sans">
+                                        <span className="text-neutral-ink-muted">Source Code</span>
+                                        <a
+                                            href={activeProject.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-primary hover:underline font-mono text-[11px]"
+                                        >
+                                            github.com ↗
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Bottom CTA Actions */}
+                            <div className="flex items-center gap-4 mt-8 pt-4 border-t border-neutral-border/50">
+                                <button
+                                    onClick={() => setActiveProject(null)}
+                                    className="flex-1 py-2 text-xs font-sans font-medium text-neutral-ink border border-neutral-border rounded-md bg-neutral-bg hover:bg-neutral-surface transition-colors"
+                                >
+                                    Close
+                                </button>
+                                <a
+                                    href={activeProject.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 py-2 text-xs font-sans font-medium text-neutral-bg bg-primary hover:bg-primary-hover rounded-md text-center transition-colors"
+                                >
+                                    View Source
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     )
 }

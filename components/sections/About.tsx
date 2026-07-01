@@ -112,12 +112,12 @@ export default function About() {
                         </div>
 
                         <div ref={textRef} className="mt-8 space-y-6 max-w-xl">
-                         <p className="text-neutral-ink-muted leading-relaxed text-base"> Hi, I'm <span className="text-neutral-ink font-medium">Ayoub Lamini</span>, a software developer who enjoys building useful applications. </p>
+                         <p className="text-neutral-ink-muted leading-relaxed text-base"> Hi, I&apos;m <span className="text-neutral-ink font-medium">Ayoub Lamini</span>, a software developer who enjoys building useful applications. </p>
 
-<p className="text-neutral-ink-muted leading-relaxed text-base"> Studying at <span className="text-neutral-ink font-medium">1337 (42 Network)</span> taught me to understand what's happening behind the scenes instead of relying solely on frameworks or abstractions. That's where I developed a solid foundation in algorithms, memory management, networking, and software architecture. </p>
+<p className="text-neutral-ink-muted leading-relaxed text-base"> Studying at <span className="text-neutral-ink font-medium">1337 (42 Network)</span> taught me to understand what&apos;s happening behind the scenes instead of relying solely on frameworks or abstractions. That&apos;s where I developed a solid foundation in algorithms, memory management, networking, and software architecture. </p>
 
 <p className="text-neutral-ink-muted leading-relaxed text-base"> Today, I use that systems background to build scalable applications that are clean, reliable, and enjoyable to use.</p>
-<p className="text-neutral-ink-muted leading-relaxed text-base"> I'm always looking for opportunities to learn, improve, and build software that solves real problems. </p>
+<p className="text-neutral-ink-muted leading-relaxed text-base"> I&apos;m always looking for opportunities to learn, improve, and build software that solves real problems. </p>
 
                             {/* Dual identity cards */}
                             {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-4">
