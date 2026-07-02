@@ -30,5 +30,6 @@ yarn-error.log*
 next-env.d.ts
 
 # local files
-.gemini\skills\impeccable
-.impeccable
+.gemini/
+.impeccable/
+.
