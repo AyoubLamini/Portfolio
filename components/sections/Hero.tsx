@@ -37,9 +37,9 @@ export default function Hero() {
             id="hero"
             className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-neutral-bg px-6"
         >
-            {/* Content */}
+
             <div className="relative z-10 max-w-4xl mx-auto text-center">
-                {/* Main title */}
+
                 <h1
                     ref={titleRef}
                     className="font-sans font-bold text-5xl sm:text-7xl md:text-8xl text-neutral-ink tracking-tighter leading-none mb-6 text-balance"
@@ -47,7 +47,7 @@ export default function Hero() {
                     Ayoub Lamini
                 </h1>
 
-                {/* Subtitle */}
+
                 <p
                     ref={subtitleRef}
                     className="font-sans text-lg sm:text-xl md:text-2xl text-neutral-ink-muted max-w-2xl mx-auto mb-4 leading-relaxed text-balance"
@@ -55,7 +55,7 @@ export default function Hero() {
                     Software Engineer & Web Developer. <br /> 
                 </p>
 
-                {/* Tech stack summary */}
+
                 <p
                     ref={techRef}
                     className="font-mono text-xs sm:text-sm text-neutral-ink-muted/60 tracking-wider mb-10"
@@ -63,7 +63,7 @@ export default function Hero() {
                     C · C++ · TypeScript · Next.js · Node.js
                 </p>
 
-                {/* CTA Buttons */}
+
                 <div
                     ref={ctaRef}
                     className="flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -99,7 +99,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* Subtle scroll down indicator */}
+
             <div
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer select-none"
                 onClick={scrollToAbout}

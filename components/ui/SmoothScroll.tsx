@@ -28,7 +28,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
             lenisRef.current = lenis
 
-            // Integrate with GSAP ScrollTrigger if available
+
             try {
                 const gsap = (await import('gsap')).default
                 const { ScrollTrigger } = await import('gsap/ScrollTrigger')
@@ -60,7 +60,7 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
         }
     }, [])
 
-    // Scroll to top on route change
+
     useEffect(() => {
         if (lenisRef.current) {
             lenisRef.current.scrollTo(0, { immediate: true })

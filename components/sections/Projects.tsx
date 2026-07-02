@@ -142,7 +142,7 @@ export default function Projects() {
         (project) => filter === 'all' || project.category === filter
     )
 
-    // Body scroll locking when modal is open
+
     useEffect(() => {
         if (activeProject) {
             document.body.style.overflow = 'hidden'
@@ -154,7 +154,7 @@ export default function Projects() {
         }
     }, [activeProject])
 
-    // Keyboard ESC listener to close modal
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
@@ -173,7 +173,7 @@ export default function Projects() {
     return (
         <section id="projects" className="py-24 border-t border-neutral-border bg-neutral-bg px-6">
             <div className="max-w-6xl mx-auto">
-                {/* Header */}
+
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                     <div>
                         <h2 className="font-sans font-bold text-4xl sm:text-5xl text-neutral-ink tracking-tight">
@@ -181,7 +181,7 @@ export default function Projects() {
                         </h2>
                     </div>
 
-                    {/* Filter Bar */}
+
                     <div className="flex items-center gap-1 border border-neutral-border p-1 bg-neutral-surface rounded-md self-start md:self-auto">
                         <button
                             onClick={() => setFilter('all')}
@@ -216,7 +216,7 @@ export default function Projects() {
                     </div>
                 </div>
 
-                {/* Projects Grid */}
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {filteredProjects.map((project) => (
                         <div
@@ -239,7 +239,7 @@ export default function Projects() {
                             </div>
 
                             <div>
-                                {/* Tech Tags */}
+
                                 <div className="flex flex-wrap gap-1.5 mb-6">
                                     {project.tags.map((tag) => (
                                         <span
@@ -251,7 +251,7 @@ export default function Projects() {
                                     ))}
                                 </div>
 
-                                {/* Actions */}
+
                                <div className="flex items-center gap-4 pt-4 border-t border-neutral-border/50">
                                   {project.canBePreviewed && (
                                       <button
@@ -280,13 +280,11 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* Modal Detail Overlay */}
+
             {activeProject && (
                 <div className="fixed inset-0 bg-neutral-bg/90 backdrop-blur-sm z-[150] flex items-center justify-center p-4 md:p-8">
-                    {/* Modal Container */}
+
                     <div className="relative bg-neutral-surface border border-neutral-border rounded-md  max-w-7xl h-[90vh] md:h-[80vh] flex flex-col md:flex-row overflow-hidden shadow-2xl">
-                        
-                        {/* Close button */}
                         <button
                             onClick={() => setActiveProject(null)}
                             className="absolute top-4 right-4 z-50 p-1.5 bg-neutral-bg/85 border border-neutral-border hover:border-neutral-ink-muted rounded-full text-neutral-ink-muted hover:text-neutral-ink transition-all"
@@ -295,18 +293,15 @@ export default function Projects() {
                             <X size={16} />
                         </button>
 
-                        {/* Left Side: Media Swiper */}
                         <div className="w-full md:w-6/8 h-[45%] md:h-full bg-neutral-bg border-b md:border-b-0 md:border-r border-neutral-border relative flex items-center justify-center p-6 select-none">
                             {activeProject.images && activeProject.images.length > 0 ? (
                                 <div className="relative w-full h-full flex items-center justify-center">
-                                    {/* Current Slide */}
                                     <img
                                         src={activeProject.images[currentSlideIndex]}
-                                        alt={`${activeProject.title} view ${currentSlideIndex + 1}`}
+                                        alt={`Media will be added soon`}
                                         className="max-w-full max-h-full object-contain rounded-md"
                                     />
 
-                                    {/* Swiper Controls */}
                                     {activeProject.images.length > 1 && (
                                         <>
                                             <button
@@ -334,7 +329,6 @@ export default function Projects() {
                                                 <ChevronRight size={18} />
                                             </button>
 
-                                            {/* Dot Indicators */}
                                             <div className="absolute bottom-2 flex gap-1.5">
                                                 {activeProject.images.map((_, idx) => (
                                                     <button
@@ -357,7 +351,6 @@ export default function Projects() {
                             )}
                         </div>
 
-                        {/* Right Side: Details & Stats */}
                         <div className="w-full md:w-1/2 h-[55%] md:h-full p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
                             <div>
                                 <span className="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase">
@@ -370,7 +363,6 @@ export default function Projects() {
                                     {activeProject.description}
                                 </p>
 
-                                {/* Technologies */}
                                 <div className="mt-6">
                                     <h4 className="font-mono text-[10px] text-neutral-ink-muted uppercase tracking-wider mb-2">Technologies</h4>
                                     <div className="flex flex-wrap gap-1.5">
@@ -385,7 +377,6 @@ export default function Projects() {
                                     </div>
                                 </div>
 
-                                {/* Project Stats / Details */}
                                 <div className="mt-6 border-t border-neutral-border/50 pt-4 space-y-2">
                                     <div className="flex justify-between text-xs font-sans">
                                         <span className="text-neutral-ink-muted">Date</span>
@@ -407,7 +398,6 @@ export default function Projects() {
                                 </div>
                             </div>
 
-                            {/* Bottom CTA Actions */}
                             <div className="flex items-center gap-4 mt-8 pt-4 border-t border-neutral-border/50">
                                 <button
                                     onClick={() => setActiveProject(null)}

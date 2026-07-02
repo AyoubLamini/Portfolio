@@ -70,7 +70,7 @@ export default function Navbar() {
                     </a>
                 </div>
 
-                {/* Mobile Menu Button */}
+
                 <button
                     className="md:hidden flex flex-col gap-1.5 p-2"
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -82,7 +82,7 @@ export default function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+
             <div
                 className={`md:hidden transition-all duration-300 overflow-hidden bg-neutral-bg/95 border-b border-neutral-border ${
                     menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
