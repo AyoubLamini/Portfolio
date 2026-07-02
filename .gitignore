@@ -28,3 +28,7 @@ yarn-error.log*
 # typescript
 *.tswsbuildinfo
 next-env.d.ts
+
+# local files
+.gemini\skills\impeccable
+.impeccable
