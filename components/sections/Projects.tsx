@@ -12,8 +12,9 @@ type Project = {
     tags: string[]
     github: string
     demo: boolean | null
-    ongoing: boolean
+    date: string | null
     isModalOpen: boolean
+    canBePreviewed: boolean
     images: string[]
 }
 
@@ -27,8 +28,9 @@ const projects: Project[] = [
         tags: ['TypeScript', 'NextJs', 'Fastify', 'WebSockets', 'Docker', 'Solidity', 'BLOCKCHAIN'],
         github: 'https://github.com/YounesMoukhlij/ft_transcendence_42',
         demo: true,
-        ongoing: false,
+        date: 'January 2026',
         isModalOpen: false,
+        canBePreviewed: true,
         images: ['/pciture123.png'],
     },
     {
@@ -40,8 +42,9 @@ const projects: Project[] = [
         tags: ['Next.js', 'TypeScript', 'NestJS', 'PostgreSQL', 'Prisma', 'Tailwind'],
         github: 'https://github.com/AyoubLamini/ApiMonitor',
         demo: null,
-        ongoing: false,
+        date: 'June 2026',
         isModalOpen: false,
+        canBePreviewed: true,
         images: ['/Api_watch/1.png', '/Api_watch/2.png', '/Api_watch/3.png', '/Api_watch/4.png', '/Api_watch/5.png', '/Api_watch/6.png', '/Api_watch/7.png', '/Api_watch/8.png'],
     },
     {
@@ -53,8 +56,9 @@ const projects: Project[] = [
         tags: ['C', 'POSIX', 'Processes', 'Signals', 'Parsing'],
         github: 'https://github.com/AyoubLamini/42-Minishell',
         demo: null,
-        ongoing: false,
+        date: 'July 2024',
         isModalOpen: false,
+        canBePreviewed: true,
         images: ['/bashIcon.png'],
     },
     {
@@ -66,8 +70,9 @@ const projects: Project[] = [
         tags: ['C++', 'Sockets', 'poll()', 'Networking', 'RFC 2812'],
         github: 'https://github.com/ayoublamini/irc-server',
         demo: null,
-        ongoing: false,
+        date: 'May 2025',
         isModalOpen: false,
+        canBePreviewed: true,
         images: ['/IrcIcon.png'],
     },
     {
@@ -79,8 +84,9 @@ const projects: Project[] = [
         tags: ['C', 'Raycasting', 'Math', 'Graphics'],
         github: 'https://github.com/Mazouz0/Cub3D_42',
         demo: null,
-        ongoing: false,
+        date: 'December 2024',
         isModalOpen: false,
+        canBePreviewed: true,
         images: ['/cubeIcon.png'],
     },
     {
@@ -92,8 +98,9 @@ const projects: Project[] = [
         tags: ['Docker', 'docker-compose', 'NGINX', 'WordPress', 'MariaDB'],
         github: 'https://github.com/AyoubLamini/Inception',
         demo: null,
-        ongoing: false,
+        date: 'August 2025',
         isModalOpen: false,
+        canBePreviewed: true,
         images: ['/dockerIcon.png'],
     },
     {
@@ -105,9 +112,10 @@ const projects: Project[] = [
         tags: ['React.js', 'HTML', 'CSS', 'JavaScript'],
         github: 'https://github.com/AyoubLamini/1337-Vacations',
         demo: null,
-        ongoing: false,
+        date: 'April 2023',
         isModalOpen: false,
-        images: ['/1337-vacations.png', '/1337-vacations-V2.png'],
+        canBePreviewed: true,
+        images: ['/1337-vacation/1.png', '/1337-vacation/2.png', '/1337-vacation/3.png',  '/1337-vacation/5.png', '/1337-vacation/6.png', '/1337-vacation/7.png', '/1337-vacation/8.png', '/1337-vacation/9.png', '/1337-vacation/10.png'] 
     },
     {
         id: 'quick-annonce',
@@ -118,9 +126,10 @@ const projects: Project[] = [
         tags: ['Laravel', 'React.js', 'Axios', 'MySQL', 'Passport'],
         github: 'https://github.com/AyoubLamini/QuickAnnonce',
         demo: null,
-        ongoing: false,
+        date: 'July 2023',
         isModalOpen: false,
-        images: ['/pciture123.png'],
+        canBePreviewed: false,
+        images: [],
     }
 ]
 
@@ -219,12 +228,6 @@ export default function Projects() {
                                     <span className="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase">
                                         {project.categoryLabel}
                                     </span>
-                                    {project.ongoing && (
-                                        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-neutral-bg border border-neutral-border text-neutral-ink-muted font-mono text-[9px] uppercase tracking-wider">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                                            Active
-                                        </span>
-                                    )}
                                 </div>
 
                                 <h3 className="font-sans font-semibold text-lg text-neutral-ink mb-2">
@@ -250,15 +253,17 @@ export default function Projects() {
 
                                 {/* Actions */}
                                <div className="flex items-center gap-4 pt-4 border-t border-neutral-border/50">
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation()
-                                            openPreview(project)
-                                        }}
-                                        className="text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
-                                    >
-                                        details ↗
-                                    </button>
+                                  {project.canBePreviewed && (
+                                      <button
+                                          onClick={(e) => {
+                                              e.stopPropagation()
+                                              openPreview(project)
+                                          }}
+                                          className="text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
+                                      >
+                                          details ↗
+                                      </button>
+                                  )}
                                     <a
                                         href={project.github}
                                         target="_blank"
@@ -279,7 +284,7 @@ export default function Projects() {
             {activeProject && (
                 <div className="fixed inset-0 bg-neutral-bg/90 backdrop-blur-sm z-[150] flex items-center justify-center p-4 md:p-8">
                     {/* Modal Container */}
-                    <div className="relative bg-neutral-surface border border-neutral-border rounded-md  w-[80%] h-[90vh] md:h-[80vh] flex flex-col md:flex-row overflow-hidden shadow-2xl">
+                    <div className="relative bg-neutral-surface border border-neutral-border rounded-md  max-w-7xl h-[90vh] md:h-[80vh] flex flex-col md:flex-row overflow-hidden shadow-2xl">
                         
                         {/* Close button */}
                         <button
@@ -291,7 +296,7 @@ export default function Projects() {
                         </button>
 
                         {/* Left Side: Media Swiper */}
-                        <div className="w-full md:w-1/2 h-[45%] md:h-full bg-neutral-bg border-b md:border-b-0 md:border-r border-neutral-border relative flex items-center justify-center p-6 select-none">
+                        <div className="w-full md:w-6/8 h-[45%] md:h-full bg-neutral-bg border-b md:border-b-0 md:border-r border-neutral-border relative flex items-center justify-center p-6 select-none">
                             {activeProject.images && activeProject.images.length > 0 ? (
                                 <div className="relative w-full h-full flex items-center justify-center">
                                     {/* Current Slide */}
@@ -383,9 +388,9 @@ export default function Projects() {
                                 {/* Project Stats / Details */}
                                 <div className="mt-6 border-t border-neutral-border/50 pt-4 space-y-2">
                                     <div className="flex justify-between text-xs font-sans">
-                                        <span className="text-neutral-ink-muted">Status</span>
+                                        <span className="text-neutral-ink-muted">Date</span>
                                         <span className="text-neutral-ink font-medium">
-                                            {activeProject.ongoing ? 'Active' : 'Completed'}
+                                            {activeProject.date}
                                         </span>
                                     </div>
                                     <div className="flex justify-between text-xs font-sans">
