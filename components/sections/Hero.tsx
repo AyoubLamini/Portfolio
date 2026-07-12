@@ -70,7 +70,7 @@ export default function Hero() {
                 >
                     <button
                         onClick={scrollToAbout}
-                        className="group flex items-center gap-2 px-6 py-2.5 rounded-md font-sans text-sm font-medium bg-primary text-neutral-bg hover:bg-primary-hover transition-colors duration-150 shadow-sm"
+                        className="group flex items-center gap-2 px-6 py-2.5 rounded-md font-sans text-sm font-medium bg-primary text-gray-200 hover:bg-primary-hover transition-colors duration-150 shadow-sm"
                     >
                         Explore My Work
                         <ArrowDown size={16} className="group-hover:translate-y-0.5 transition-transform duration-150" />
