@@ -62,7 +62,7 @@ export default function Navbar() {
                     ))}
 
                     <a
-                        href="/Ayoub_Lamini_Resume_2026.pdf"
+                        href="/AyoubLamini_resume.pdf"
                         download
                         className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-neutral-border text-neutral-ink font-sans text-sm rounded-md bg-neutral-surface hover:bg-neutral-border hover:text-neutral-ink transition-all duration-200"
                     >
