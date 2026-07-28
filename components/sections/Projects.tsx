@@ -16,6 +16,7 @@ type Project = {
     isModalOpen: boolean
     canBePreviewed: boolean
     images: string[]
+    video: string | null
 }
 
 const projects: Project[] = [
@@ -31,7 +32,8 @@ const projects: Project[] = [
         date: 'January 2026',
         isModalOpen: false,
         canBePreviewed: true,
-        images: ['/pciture123.png'],
+        images: ['/ft_trans/1.png', '/ft_trans/2.png', '/ft_trans/3.png', '/ft_trans/4.png'],
+        video: '/ft_trans/vid.mp4'
     },
     {
         id: 'api-monitor',
@@ -46,6 +48,7 @@ const projects: Project[] = [
         isModalOpen: false,
         canBePreviewed: true,
         images: ['/Api_watch/1.png', '/Api_watch/2.png', '/Api_watch/3.png', '/Api_watch/4.png', '/Api_watch/5.png', '/Api_watch/6.png', '/Api_watch/7.png', '/Api_watch/8.png'],
+        video: null
     },
     {
         id: 'minishell',
@@ -58,8 +61,9 @@ const projects: Project[] = [
         demo: null,
         date: 'July 2024',
         isModalOpen: false,
-        canBePreviewed: true,
+        canBePreviewed: false,
         images: ['/bashIcon.png'],
+        video: null
     },
     {
         id: 'irc-server',
@@ -72,8 +76,9 @@ const projects: Project[] = [
         demo: null,
         date: 'May 2025',
         isModalOpen: false,
-        canBePreviewed: true,
+        canBePreviewed: false,
         images: ['/IrcIcon.png'],
+        video: null
     },
     {
         id: 'cub3d',
@@ -86,8 +91,9 @@ const projects: Project[] = [
         demo: null,
         date: 'December 2024',
         isModalOpen: false,
-        canBePreviewed: true,
+        canBePreviewed: false,
         images: ['/cubeIcon.png'],
+        video: null
     },
     {
         id: 'inception',
@@ -100,8 +106,9 @@ const projects: Project[] = [
         demo: null,
         date: 'August 2025',
         isModalOpen: false,
-        canBePreviewed: true,
+        canBePreviewed: false,
         images: ['/dockerIcon.png'],
+        video: null
     },
     {
         id: 'vacations-1337',
@@ -115,7 +122,8 @@ const projects: Project[] = [
         date: 'April 2023',
         isModalOpen: false,
         canBePreviewed: true,
-        images: ['/1337-vacation/1.png', '/1337-vacation/2.png', '/1337-vacation/3.png',  '/1337-vacation/5.png', '/1337-vacation/6.png', '/1337-vacation/7.png', '/1337-vacation/8.png', '/1337-vacation/9.png', '/1337-vacation/10.png'] 
+        images: ['/1337-vacation/1.png', '/1337-vacation/2.png', '/1337-vacation/3.png',  '/1337-vacation/5.png', '/1337-vacation/6.png', '/1337-vacation/7.png', '/1337-vacation/8.png', '/1337-vacation/9.png', '/1337-vacation/10.png'],
+        video: null 
     },
     {
         id: 'quick-annonce',
@@ -130,6 +138,7 @@ const projects: Project[] = [
         isModalOpen: false,
         canBePreviewed: false,
         images: [],
+        video: null
     }
 ]
 
@@ -169,6 +178,11 @@ export default function Projects() {
         setActiveProject(project)
         setCurrentSlideIndex(0)
     }
+
+    const activeMedia = activeProject ? [
+        ...(activeProject.video ? [{ type: 'video', src: activeProject.video }] : []),
+        ...(activeProject.images ? activeProject.images.map(img => ({ type: 'image', src: img })) : [])
+    ] : [];
 
     return (
         <section id="projects" className="py-24 border-t border-neutral-border bg-neutral-bg px-6">
@@ -261,7 +275,7 @@ export default function Projects() {
                                           }}
                                           className="text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
                                       >
-                                          details ↗
+                                          Preview ↗
                                       </button>
                                   )}
                                     <a
@@ -294,21 +308,31 @@ export default function Projects() {
                         </button>
 
                         <div className="w-full md:w-6/8 h-[45%] md:h-full bg-neutral-bg border-b md:border-b-0 md:border-r border-neutral-border relative flex items-center justify-center p-6 select-none">
-                            {activeProject.images && activeProject.images.length > 0 ? (
+                            {activeMedia.length > 0 ? (
                                 <div className="relative w-full h-full flex items-center justify-center">
-                                    <img
-                                        src={activeProject.images[currentSlideIndex]}
-                                        alt={`Media will be added soon`}
-                                        className="max-w-full max-h-full object-contain rounded-md"
-                                    />
+                                    {activeMedia[currentSlideIndex]?.type === 'video' ? (
+                                        <video
+                                            src={activeMedia[currentSlideIndex].src}
+                                            controls
+                                            autoPlay
+                                            muted
+                                            className="max-w-full max-h-full object-contain rounded-md"
+                                        />
+                                    ) : (
+                                        <img
+                                            src={activeMedia[currentSlideIndex]?.src}
+                                            alt={`Media will be added soon`}
+                                            className="max-w-full max-h-full object-contain rounded-md"
+                                        />
+                                    )}
 
-                                    {activeProject.images.length > 1 && (
+                                    {activeMedia.length > 1 && (
                                         <>
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation()
                                                     setCurrentSlideIndex((prev) =>
-                                                        prev === 0 ? activeProject.images.length - 1 : prev - 1
+                                                        prev === 0 ? activeMedia.length - 1 : prev - 1
                                                     )
                                                 }}
                                                 className="absolute left-2 p-1.5 bg-neutral-surface/90 border border-neutral-border hover:border-neutral-ink-muted rounded-full text-neutral-ink-muted hover:text-neutral-ink transition-colors"
@@ -320,7 +344,7 @@ export default function Projects() {
                                                 onClick={(e) => {
                                                     e.stopPropagation()
                                                     setCurrentSlideIndex((prev) =>
-                                                        prev === activeProject.images.length - 1 ? 0 : prev + 1
+                                                        prev === activeMedia.length - 1 ? 0 : prev + 1
                                                     )
                                                 }}
                                                 className="absolute right-2 p-1.5 bg-neutral-surface/90 border border-neutral-border hover:border-neutral-ink-muted rounded-full text-neutral-ink-muted hover:text-neutral-ink transition-colors"
@@ -330,7 +354,7 @@ export default function Projects() {
                                             </button>
 
                                             <div className="absolute bottom-2 flex gap-1.5">
-                                                {activeProject.images.map((_, idx) => (
+                                                {activeMedia.map((_, idx) => (
                                                     <button
                                                         key={idx}
                                                         onClick={() => setCurrentSlideIndex(idx)}
