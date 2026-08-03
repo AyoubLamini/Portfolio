@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Github, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import PianoTextButton from '@/components/ui/PianoTextButton'
 
 type Project = {
     id: string
@@ -275,7 +276,7 @@ export default function Projects() {
                                           }}
                                           className="text-xs font-mono text-neutral-ink-muted hover:text-neutral-ink transition-colors"
                                       >
-                                          Preview ↗
+                                          <PianoTextButton  />
                                       </button>
                                   )}
                                     <a
