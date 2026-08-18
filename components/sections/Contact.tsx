@@ -12,7 +12,7 @@ const socials = [
     },
     {
         label: 'LinkedIn',
-        href: 'https://linkedin.com/in/ayoublamini',
+        href: 'https://www.linkedin.com/in/ayoub-lamini-844a68341/',
         icon: Linkedin,
         handle: 'Ayoub Lamini',
     },
