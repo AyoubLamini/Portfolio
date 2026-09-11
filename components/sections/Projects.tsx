@@ -48,8 +48,23 @@ const projects: Project[] = [
         date: 'June 2026',
         isModalOpen: false,
         canBePreviewed: true,
-        images: ['/Api_watch/1.png', '/Api_watch/2.png', '/Api_watch/3.png', '/Api_watch/4.png', '/Api_watch/5.png', '/Api_watch/6.png', '/Api_watch/7.png', '/Api_watch/8.png'],
+        images: ['/Api_watch/1.png', '/Api_watch/2.png', '/Api_watch/3.png', '/Api_watch/4.png', '/Api_watch/5.png', '/Api_watch/6.png', '/Api_watch/7.png'],
         video: null
+    },
+    {
+    id: 'movie-recognition',
+    title: 'Movie Recognition',
+    category: 'web',
+    categoryLabel: 'Full-Stack / Mobile',
+    description: 'Mobile Flutter app that identifies movies and TV shows from images, clips, or text descriptions, enriched with details from the OMDb API. Features Google OAuth, personal watchlist with ratings, and a credit system with subscriptions and ad support.',
+    tags: ['Flutter', 'Dart', 'Fastify', 'TypeScript', 'Prisma', 'SQLite', 'Gemini AI', 'OAuth'],
+    github: 'https://github.com/AyoubLamini/Movie-Finder',
+    demo: true,
+    date: 'September 2026',
+    isModalOpen: false,
+    canBePreviewed: true,
+    images: ['/MovieFinder/1.png', '/MovieFinder/2.png', '/MovieFinder/3.png', '/MovieFinder/4.png', '/MovieFinder/5.png'],
+    video: '/MovieFinder/vid.mp4'
     },
     {
         id: 'minishell',
@@ -126,21 +141,21 @@ const projects: Project[] = [
         images: ['/1337-vacation/1.png', '/1337-vacation/2.png', '/1337-vacation/3.png',  '/1337-vacation/5.png', '/1337-vacation/6.png', '/1337-vacation/7.png', '/1337-vacation/8.png', '/1337-vacation/9.png', '/1337-vacation/10.png'],
         video: null 
     },
-    {
-        id: 'quick-annonce',
-        title: 'QuickAnnonce',
-        category: 'web',
-        categoryLabel: 'Web / React & Laravel',
-        description: 'My first full stack Web App, features CRUD operations through API, Laravel passport token management, and React friendly UI',
-        tags: ['Laravel', 'React.js', 'Axios', 'MySQL', 'Passport'],
-        github: 'https://github.com/AyoubLamini/QuickAnnonce',
-        demo: null,
-        date: 'July 2023',
-        isModalOpen: false,
-        canBePreviewed: false,
-        images: [],
-        video: null
-    }
+        {
+            id: 'quick-annonce',
+            title: 'QuickAnnonce',
+            category: 'web',
+            categoryLabel: 'Web / React & Laravel',
+            description: 'My first full stack Web App, features CRUD operations through API, Laravel passport token management, and React friendly UI',
+            tags: ['Laravel', 'React.js', 'Axios', 'MySQL', 'Passport'],
+            github: 'https://github.com/AyoubLamini/QuickAnnonce',
+            demo: null,
+            date: 'July 2023',
+            isModalOpen: false,
+            canBePreviewed: false,
+            images: [],
+            video: null
+        }
 ]
 
 export default function Projects() {
@@ -240,7 +255,7 @@ export default function Projects() {
                         >
                             <div>
                                 <div className="flex items-center justify-between gap-4 mb-4">
-                                    <span className="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase">
+                                    <span className="font-mono text-[10px] text-primary-light font-semibold tracking-wider uppercase">
                                         {project.categoryLabel}
                                     </span>
                                 </div>
@@ -378,7 +393,7 @@ export default function Projects() {
 
                         <div className="w-full md:w-1/2 h-[55%] md:h-full p-6 md:p-8 flex flex-col justify-between overflow-y-auto">
                             <div>
-                                <span className="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase">
+                                <span className="font-mono text-[10px] text-primary-light font-semibold tracking-wider uppercase">
                                     {activeProject.categoryLabel}
                                 </span>
                                 <h3 className="font-sans font-bold text-2xl text-neutral-ink mt-1">
@@ -434,7 +449,7 @@ export default function Projects() {
                                     href={activeProject.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 py-2 text-xs font-sans font-medium text-neutral-bg bg-primary hover:bg-primary-hover rounded-md text-center transition-colors"
+                                    className="flex-1 py-2 text-xs font-sans font-medium text-white bg-primary hover:bg-primary-hover rounded-md text-center transition-colors"
                                 >
                                     View Source
                                 </a>

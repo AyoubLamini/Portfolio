@@ -9,20 +9,21 @@ if (typeof window !== 'undefined') {
 }
 
 const timeline = [
-    {
-        year: '2021 - 2023',
-        title: 'ISTA ISGI',
-        subtitle: 'Full-Stack Development Diploma',
-        description:
-            'Two year program covering algorithms and web development, Structural diagrams, databases and project management, learnt modern frameworks (React, Laravel). as a result built my first full stack application.',
-    },
-    {
+     {
         year: '2023 - Now',
         title: '1337 — 42 Network',
         subtitle: 'Common Core Program',
         description:
             'Completed the Common Core at 1337/42, a peer-to-peer software engineering program. Built a strong foundation in C and C++, systems programming, algorithms, networking, and software architecture through a project-based learning under strict technical constraints.',
     },
+    {
+        year: '2021 - 2023',
+        title: 'ISTA ISGI',
+        subtitle: 'Full-Stack Development Diploma',
+        description:
+            'Two year program covering algorithms and web development, Structural diagrams, databases and project management, learnt modern frameworks (React, Laravel). as a result built my first full stack application.',
+    }
+   
     // {
     //     year: 'Now',
     //     title: 'Web Development Focus',
@@ -122,13 +123,13 @@ export default function About() {
                             {/* Dual identity cards */}
                             {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-4">
                                 <div className="p-4 rounded-md border border-neutral-border bg-neutral-surface">
-                                    <p className="font-mono text-primary text-[11px] font-semibold tracking-wider uppercase mb-2">SYSTEMS</p>
+                                    <p className="font-mono text-primary-light text-[11px] font-semibold tracking-wider uppercase mb-2">SYSTEMS</p>
                                     <p className="text-neutral-ink font-sans text-sm leading-relaxed">
                                         C · C++ · Unix · Algorithms · Data Structures · OOP
                                     </p>
                                 </div>
                                 <div className="p-4 rounded-md border border-neutral-border bg-neutral-surface">
-                                    <p className="font-mono text-primary text-[11px] font-semibold tracking-wider uppercase mb-2">WEB</p>
+                                    <p className="font-mono text-primary-light text-[11px] font-semibold tracking-wider uppercase mb-2">WEB</p>
                                     <p className="text-neutral-ink font-sans text-sm leading-relaxed">
                                         React · Next.js · TypeScript · Node.js · APIs
                                     </p>

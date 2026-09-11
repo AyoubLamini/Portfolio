@@ -133,7 +133,7 @@ export default function Contact() {
                                 <button
                                     type="submit"
                                     disabled={loading}
-                                    className="group w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-sans text-sm font-medium bg-primary text-neutral-bg hover:bg-primary-hover transition-colors duration-150 disabled:opacity-50"
+                                    className="group w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-sans text-sm font-medium bg-primary text-white hover:bg-primary-hover transition-colors duration-150 disabled:opacity-50"
                                 >
                                     {loading ? 'Sending...' : 'Send Message'}
                                     {!loading && <Send size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-150" />}

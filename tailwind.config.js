@@ -14,6 +14,7 @@ module.exports = {
                 'neutral-ink-muted': '#a1a1aa',
                 'primary': '#4f46e5',
                 'primary-hover': '#4338ca',
+                'primary-light': '#818cf8',
             },
             fontFamily: {
                 sans: ['Manrope', 'system-ui', 'sans-serif'],
