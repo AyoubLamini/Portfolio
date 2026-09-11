@@ -52,7 +52,7 @@ export default function Hero() {
                     ref={subtitleRef}
                     className="font-sans text-lg sm:text-xl md:text-2xl text-neutral-ink-muted max-w-2xl mx-auto mb-4 leading-relaxed text-balance"
                 >
-                    Software Engineer & Web Developer. <br /> 
+                    Software Engineer <br /> 
                 </p>
 
 
@@ -60,7 +60,7 @@ export default function Hero() {
                     ref={techRef}
                     className="font-mono text-xs sm:text-sm text-neutral-ink-muted/60 tracking-wider mb-10"
                 >
-                    C · C++ · TypeScript · Next.js · Node.js
+                    
                 </p>
 
 

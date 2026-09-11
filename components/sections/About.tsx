@@ -113,9 +113,9 @@ export default function About() {
                         </div>
 
                         <div ref={textRef} className="mt-8 space-y-6 max-w-xl">
-                         <p className="text-neutral-ink-muted leading-relaxed text-base"> Hi, I&apos;m <span className="text-neutral-ink font-medium">Ayoub Lamini</span>, a software developer who enjoys building useful applications. </p>
+                         <p className="text-neutral-ink-muted leading-relaxed text-base"> Hi, I&apos;m <span className="text-neutral-ink font-medium">Ayoub Lamini</span>, a software developer who enjoys building impactful solutions. </p>
 
-<p className="text-neutral-ink-muted leading-relaxed text-base"> Studying at <span className="text-neutral-ink font-medium">1337 (42 Network)</span> taught me to understand what&apos;s happening behind the scenes instead of relying solely on frameworks or abstractions. That&apos;s where I developed a solid foundation in algorithms, memory management, networking, and software architecture. </p>
+<p className="text-neutral-ink-muted leading-relaxed text-base"> Studying at <span className="text-neutral-ink font-medium">1337 (42 Network)</span> taught me to understand what&apos;s happening behind the scenes instead of relying solely on frameworks or abstractions. That&apos;s where I developed a solid foundation in software architecture, low level programing, networking, and performance optimization. </p>
 
 <p className="text-neutral-ink-muted leading-relaxed text-base"> Today, I use that systems background to build scalable applications that are clean, reliable, and enjoyable to use.</p>
 <p className="text-neutral-ink-muted leading-relaxed text-base"> I&apos;m always looking for opportunities to learn, improve, and build software that solves real problems. </p>
