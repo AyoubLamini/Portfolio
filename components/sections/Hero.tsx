@@ -52,7 +52,7 @@ export default function Hero() {
                     ref={subtitleRef}
                     className="font-sans text-lg sm:text-xl md:text-2xl text-neutral-ink-muted max-w-2xl mx-auto mb-4 leading-relaxed text-balance"
                 >
-                    Software Engineer <br /> 
+                    Software Engineer & Full-stack Developer  <br /> 
                 </p>
 
 

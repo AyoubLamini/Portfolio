@@ -28,7 +28,7 @@ const projects: Project[] = [
         categoryLabel: 'Full-Stack / Web',
         description: 'A full-stack multiplayer Pong platform featuring real-time gameplay with WebSockets, OAuth authentication, live chat, friend management, match history, blockchain-backed scores, and customizable user profiles.',
         tags: ['TypeScript', 'NextJs', 'Fastify', 'WebSockets', 'Docker', 'Solidity', 'BLOCKCHAIN'],
-        github: 'https://github.com/YounesMoukhlij/ft_transcendence_42',
+        github: 'https://github.com/AyoubLamini/ft_transcendence_42',
         demo: true,
         date: 'January 2026',
         isModalOpen: false,
