@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     },
 }
 
+import { ThemeProvider } from '@/components/ThemeProvider'
+import { ThemePullCord } from '@/components/ui/ThemePullCord'
+
 export default function RootLayout({
     children,
 }: {
@@ -34,7 +37,15 @@ export default function RootLayout({
                 />
             </head>
             <body>
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <ThemePullCord />
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     )

@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useTheme } from 'next-themes';
 
-const BASE_COLOR: [number, number, number] = [244, 241, 234]; // --accent
 const WAVE_COLOR: [number, number, number] = [79, 70, 229]; // #4f46e5
 
 const MAX_SCALE = 1;
@@ -21,14 +21,26 @@ export default function PianoTextButton({
   onClick,
 }: PianoTextButtonProps) {
   const charRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   charRefs.current = [];
 
   useEffect(() => {
+    if (!mounted) return;
+    
     const chars = charRefs.current;
     let rafId: number;
     let timeoutId: ReturnType<typeof setTimeout>;
     let start: number | null = null;
+    
+    const isLight = resolvedTheme === 'light';
+    // Use dark gray for light theme, off-white for dark theme
+    const baseColor: [number, number, number] = isLight ? [113, 113, 122] : [244, 241, 234];
 
     function frame(ts: number) {
       if (start === null) start = ts;
@@ -48,13 +60,13 @@ export default function PianoTextButton({
         span.style.transform = `translateY(${-lift}px) scaleY(${scale})`;
 
         const r = Math.round(
-          BASE_COLOR[0] + (WAVE_COLOR[0] - BASE_COLOR[0]) * eased
+          baseColor[0] + (WAVE_COLOR[0] - baseColor[0]) * eased
         );
         const g = Math.round(
-          BASE_COLOR[1] + (WAVE_COLOR[1] - BASE_COLOR[1]) * eased
+          baseColor[1] + (WAVE_COLOR[1] - baseColor[1]) * eased
         );
         const b = Math.round(
-          BASE_COLOR[2] + (WAVE_COLOR[2] - BASE_COLOR[2]) * eased
+          baseColor[2] + (WAVE_COLOR[2] - baseColor[2]) * eased
         );
 
         span.style.color = `rgb(${r},${g},${b})`;
@@ -82,7 +94,7 @@ export default function PianoTextButton({
       cancelAnimationFrame(rafId);
       clearTimeout(timeoutId);
     };
-  }, [text]);
+  }, [text, resolvedTheme, mounted]);
 
   return (
     <button className="piano-btn" onClick={onClick}>

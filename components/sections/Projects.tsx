@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Github, ExternalLink, X, ChevronLeft, ChevronRight } from 'lucide-react'
 import PianoTextButton from '@/components/ui/PianoTextButton'
 
@@ -332,13 +333,18 @@ export default function Projects() {
                                             controls
                                             autoPlay
                                             muted
+                                            playsInline
+                                            preload="metadata"
                                             className="max-w-full max-h-full object-contain rounded-md"
                                         />
                                     ) : (
-                                        <img
+                                        <Image
                                             src={activeMedia[currentSlideIndex]?.src}
-                                            alt={`Media will be added soon`}
-                                            className="max-w-full max-h-full object-contain rounded-md"
+                                            alt={`Project media slide ${currentSlideIndex + 1}`}
+                                            fill
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 75vw, 60vw"
+                                            className="object-contain rounded-md"
+                                            priority={currentSlideIndex === 0}
                                         />
                                     )}
 

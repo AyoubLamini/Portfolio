@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Download } from "lucide-react"
+import { Download, Moon, Sun } from "lucide-react"
+import { useTheme } from 'next-themes'
 import Link from 'next/link'
 
 const navLinks = [
@@ -14,8 +15,11 @@ const navLinks = [
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
+    const { theme, setTheme, resolvedTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
+        setMounted(true)
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
         }
@@ -85,7 +89,7 @@ export default function Navbar() {
 
             <div
                 className={`md:hidden transition-all duration-300 overflow-hidden bg-neutral-bg/95 border-b border-neutral-border ${
-                    menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                    menuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
                 }`}
             >
                 <div className="px-6 py-4 flex flex-col gap-4">
@@ -98,6 +102,17 @@ export default function Navbar() {
                             {link.label}
                         </button>
                     ))}
+                    
+                    {mounted && (
+                        <button
+                            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+                            className="flex items-center justify-between w-full px-3.5 py-2 border border-neutral-border text-neutral-ink font-sans text-sm rounded-md bg-neutral-surface hover:bg-neutral-border transition-all duration-200"
+                        >
+                            <span>Toggle Theme</span>
+                            {resolvedTheme === 'dark' ? <Sun size={14} className="text-neutral-ink-muted" /> : <Moon size={14} className="text-neutral-ink-muted" />}
+                        </button>
+                    )}
+
                     <a
                         href="/Ayoub_Lamini_resume.pdf"
                         download
